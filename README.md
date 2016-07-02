@@ -67,10 +67,68 @@ helloWorld : string;
 helloWorld = "Hello, World";
 ```
 
-Declare and Initialize via Type Inference:
+Declare and Initialize via Type Inference using `:=`:
 ```cpp
+// The type is inferred at compiletime from the right-hand-side.
+// This works with function calls too.
 helloWorld := "Hello, World!";
 ```
+
+#### Constant Declaration
+
+Constants are defined with the `::` operator:
+
+Usually, the type is inferred like so:
+```cpp
+CONSANT_VALUE :: "Some Value";
+```
+
+But you can define a constant with a type as well:
+```cpp
+CONSTANT_VALUE : string :: "Some Value";
+```
+
+#### Dynamically-sized Types
+
+A few of the primitive types in Phix are dynamically allocated by default.
+
+`int`, `float`, `string`, and `array` are all types which, by default, change in size over their lifetime automatically, dependant upon what values they are set to at runtime.
+
+```cpp
+// The runtime will automatically determine that this number is small enough to be an 8-bit integer.
+autoInt : int = 5;
+
+// Since 3491 > 256, this will automatically reallocate itself to 16 bits, rather than 8.
+autoInt = 3491;
+```
+
+Its important to note that reallocation **does not** change the location of the value in memory. `^autoInt` would return the same pointer before and after the assignment to 3491.
+
+#### Dynamically-sized types: How? (pointer bridges)
+
+The runtime allocates a new pointer that is another 2 bytes long. It then treats this new pointer as the starting pointer when converting from bytes to int16:
+
+```cpp
+(5)
+0xab0710 : 0000 0101
+```
+becomes:
+```cpp
+(3491)
+0xab0710 : 1010 0011 // the last 8 bits of (3491) as binary are assigned to this address
+0xab0850 : 0000 1101 // then this new address is allocated
+```
+Now, when getting the value of autoInt, the runtime returns the result of `(^(0xab0850) << 8) + ^(0xab0710)`
+
+The original location is still at 0xab0710, and ^autoInt returns that address.
+
+Whats occuring here in the runtime is labled as a *"pointer bridge"*. This pointer bridge is mapped out in the runtime so that any direct calls to get values at specific locations based on that variable will cause a jump in memory after the call-length of the first address is exceeded.
+
+Basically: `(^autoInt)[3]` will return `(0xab0850)[1]` or `1101`.
+
+This pointer bridge will exist until `delete` is called on `autoInt`.
+
+#### Generic Types and Parameters
 
 *TODO: Continue comprehensive list of features in Phix*
 
