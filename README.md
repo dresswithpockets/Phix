@@ -48,7 +48,7 @@ intPointer : ^int;
 charReference : &char;
 
 // Combining:
-2DstringPointerArrayReference: &[,]^string;
+stringPointerArray2DReference: &[,]^string;
 ```
 
 #### Variable Initialization
