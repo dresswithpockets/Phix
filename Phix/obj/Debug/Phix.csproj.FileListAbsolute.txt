@@ -1,0 +1,6 @@
+G:\Programming\Phix\Phix\Phix\bin\Debug\Phix.exe.config
+G:\Programming\Phix\Phix\Phix\bin\Debug\Phix.exe
+G:\Programming\Phix\Phix\Phix\bin\Debug\Phix.pdb
+G:\Programming\Phix\Phix\Phix\obj\Debug\Phix.csprojResolveAssemblyReference.cache
+G:\Programming\Phix\Phix\Phix\obj\Debug\Phix.exe
+G:\Programming\Phix\Phix\Phix\obj\Debug\Phix.pdb
