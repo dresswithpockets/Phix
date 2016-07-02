@@ -104,7 +104,7 @@ autoInt = 3491;
 
 Its important to note that reallocation **does not** change the location of the value in memory. `^autoInt` would return the same pointer before and after the assignment to 3491.
 
-#### Dynamically-sized types: How? (pointer bridges)
+#### Pointer Bridges (Dynamically-sized types cont.)
 
 The runtime allocates a new pointer that is another 2 bytes long. It then treats this new pointer as the starting pointer when converting from bytes to int16:
 
