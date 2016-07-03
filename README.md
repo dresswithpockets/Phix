@@ -23,7 +23,15 @@ char* some_string;
 ```
 In Phix, that would look like:
 ```cpp
-some_string : string;
+some_string : string = ---;
+```
+What is `---`? It means "don't initialize". If you don't specify `---` then the variable will default to its respective type's default value:
+```cpp
+init_string : string;
+print(init_string); // prints an empty string
+
+no_init_string : string = ---;
+print(no_init_string); // causes a fatal error, crashing the application.
 ```
 
 Note: `string` is a built in type that houses basic string operation support. However, it casts to and from `^char` seamlessly.
@@ -43,12 +51,12 @@ char& char_reference;
 ```
 However, similar to Jai, the Grammar for type specification follows a "pointer to type" format, rather than a "type, pointer to" format:
 ```cpp
-float_array : []float;
-int_pointer : ^int;
-char_reference : &char;
+float_array : []float = ---;
+int_pointer : ^int = ---;
+char_reference : &char = ---;
 
 // Combining:
-string_pointer_array2D_reference: &[,]^string;
+string_pointer_array2D_reference: &[,]^string = ---;
 ```
 
 #### Variable Initialization
@@ -62,7 +70,7 @@ hello_world : string = "Hello, World!";
 
 After declaration:
 ```cpp
-hello_world : string;
+hello_world : string = ---;
 
 hello_world = "Hello, World";
 ```
