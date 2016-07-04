@@ -1,7 +1,7 @@
 # Phix
-Phix is an imperative programming language that is heavily inspired by C and Jai.
+Phix a programming language that is heavily inspired by C and Jai.
 
-The language is designed to recover several of C's pitfalls such as inconsistent type schemes, and a lack of a backend runtime provided services such as minimalistic type management. For an entire list of features, see below
+The language is designed to ammend several of C's pitfalls such as inconsistent type schemes, and a lack of a backend runtime provided services such as minimalistic type management. For an entire list of features, see below
 
 ## Features
 
