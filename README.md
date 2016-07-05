@@ -1,7 +1,7 @@
 # Phix
 Phix a programming language that is heavily inspired by C and Jai.
 
-The language is designed to ammend several of C's pitfalls such as inconsistent type schemes, and a lack of a backend runtime provided services such as minimalistic type management. For an entire list of features, see below
+The language is designed to ammend several of C's pitfalls such as inconsistent type schemes and a lack of a *backend runtime* providing services such as minimalistic type management. For an entire list of features, see below
 
 ## Features
 
@@ -17,7 +17,7 @@ Phix follows some strict grammar rules that more fluidly transliterate to englis
 
 Variables follow a "variable of type" grammar rather than the standard "type, variable of" grammar thats notable in C and C++.
 
-Heres a typical variable declaration in C++:
+Heres a typical variable declaration in C/C++:
 ```cpp
 char* some_string;
 ```
